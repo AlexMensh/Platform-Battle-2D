@@ -1,20 +1,25 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 
-public class Mover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _gravityForce;
 
-    [SerializeField] private bool _isOnGround = true;
-
     private Rigidbody2D _playerRigidbody;
+    private SpriteRenderer _playerSpriteRenderer;
+
+    public float HorizontalInput { get; private set; }
+    public bool IsOnGround { get; private set; } = true;
 
     private void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
+        _playerSpriteRenderer = GetComponent<SpriteRenderer>();
+
         Physics2D.gravity *= _gravityForce;
     }
 
@@ -31,22 +36,24 @@ public class Mover : MonoBehaviour
 
     private Vector3 GetMoveDirection()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        HorizontalInput = Input.GetAxis("Horizontal");
 
-        return new Vector3 (horizontalInput, 0f, 0f);
+        _playerSpriteRenderer.flipX = HorizontalInput < 0 ? true : false;
+
+        return new Vector3 (HorizontalInput, 0f, 0f);
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isOnGround) 
+        if (Input.GetKeyDown(KeyCode.Space) && IsOnGround) 
         { 
             _playerRigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-            _isOnGround = false;
+            IsOnGround = false;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _isOnGround = true;
+        IsOnGround = true;
     }
 }
