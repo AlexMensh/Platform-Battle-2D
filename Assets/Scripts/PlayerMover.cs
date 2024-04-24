@@ -48,12 +48,16 @@ public class PlayerMover : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround) 
         { 
             _playerRigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-            IsOnGround = false;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IsOnGround = true;
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        IsOnGround = false;
     }
 }

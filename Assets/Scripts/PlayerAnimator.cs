@@ -37,6 +37,5 @@ public class PlayerAnimator : MonoBehaviour
         {
             _playerAnimator.SetBool("IsJumping", true);
         }
-
     }
 }
