@@ -5,7 +5,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private SpawnPoint[] _spawnPoints;
     [SerializeField] private float _spawnDelay;
-    [SerializeField] private int _maxPowerups;
+    [SerializeField] private int _maxRoundPowerups;
 
     private void Start()
     {
@@ -16,14 +16,11 @@ public class Spawner : MonoBehaviour
     {
         var wait = new WaitForSeconds(_spawnDelay);
 
-        for (int i = 0; i < _maxPowerups; i++)
+        for (int i = 0; i < _maxRoundPowerups; i++)
         {
             int spawnerIndex = Random.Range(0, _spawnPoints.Length);
 
-            if (_spawnPoints[spawnerIndex])
-            {
-                _spawnPoints[spawnerIndex].ActivatePowerup();
-            }
+            _spawnPoints[spawnerIndex].ActivatePowerup();
 
             yield return wait;
         }

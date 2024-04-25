@@ -1,8 +1,7 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(SpriteRenderer))]
-
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -11,6 +10,10 @@ public class PlayerMover : MonoBehaviour
 
     private Rigidbody2D _playerRigidbody;
     private SpriteRenderer _playerSpriteRenderer;
+    private string _horizontalInputName = "Horizontal";
+
+    public static Action OnVerticalPositionChange;
+    public static Action OnHorizontalPositionChange;
 
     public float HorizontalInput { get; private set; }
     public bool IsOnGround { get; private set; } = true;
@@ -23,41 +26,43 @@ public class PlayerMover : MonoBehaviour
         Physics2D.gravity *= _gravityForce;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IsOnGround = true;
+        OnVerticalPositionChange?.Invoke();
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        IsOnGround = false;
+        OnVerticalPositionChange?.Invoke();
+    }
+
     private void Update()
     {
-        Move(GetMoveDirection());
+        Move();
         Jump();
     }
 
-    private void Move(Vector3 direction)
+    private void Move()
     {
-        transform.position += direction * _speed * Time.deltaTime;
-    }
+        HorizontalInput = Input.GetAxis(_horizontalInputName);
 
-    private Vector3 GetMoveDirection()
-    {
-        HorizontalInput = Input.GetAxis("Horizontal");
+        if (HorizontalInput != 0)
+        {
+            OnHorizontalPositionChange?.Invoke();
 
-        _playerSpriteRenderer.flipX = HorizontalInput < 0 ? true : false;
+            transform.position += new Vector3(HorizontalInput, 0f, 0f) * _speed * Time.deltaTime;
 
-        return new Vector3 (HorizontalInput, 0f, 0f);
+            _playerSpriteRenderer.flipX = HorizontalInput < 0 ? true : false;
+        }
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && IsOnGround) 
-        { 
+        if (Input.GetKeyDown(KeyCode.Space) && IsOnGround)
+        {
             _playerRigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        IsOnGround = true;
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        IsOnGround = false;
     }
 }

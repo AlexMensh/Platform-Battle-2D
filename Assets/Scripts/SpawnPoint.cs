@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] private Powerup _powerpupPrefab;
-
+    [SerializeField] private Powerup _powerpup;
+        
     public void ActivatePowerup()
     {
-        _powerpupPrefab.gameObject.SetActive(true);
+        if (_powerpup.isActiveAndEnabled == false)
+        {
+            _powerpup.gameObject.SetActive(true);
+        }
     }
 }

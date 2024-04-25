@@ -1,7 +1,6 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-
 public class EnemyPatroller : MonoBehaviour
 {
     [SerializeField] private Transform[] _waypoints;
