@@ -56,7 +56,7 @@ public class PlayerMover : MonoBehaviour
         IsOnGround = true;
     }
 
-    void OnCollisionExit2D(Collision2D other)
+    private void OnCollisionExit2D(Collision2D other)
     {
         IsOnGround = false;
     }

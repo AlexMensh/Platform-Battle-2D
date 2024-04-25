@@ -1,16 +1,20 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(PlayerMover))]
 
 public class PlayerAnimator : MonoBehaviour
 {
     private Animator _playerAnimator;
-    private PlayerMover _playerMoverScript;
+    private PlayerMover _playerMover;
+
+    private int _speedHash = Animator.StringToHash("Speed");
+    private int _isJumpingHash = Animator.StringToHash("IsJumping");
 
     private void Start()
     {
         _playerAnimator = GetComponent<Animator>();
-        _playerMoverScript = GetComponent<PlayerMover>();
+        _playerMover = GetComponent<PlayerMover>();
     }
 
     private void Update()
@@ -21,21 +25,14 @@ public class PlayerAnimator : MonoBehaviour
 
     private void PlayerMovementCheck()
     {
-        if (_playerMoverScript.IsOnGround)
+        if (_playerMover.IsOnGround)
         {
-            _playerAnimator.SetFloat("Speed", Mathf.Abs(_playerMoverScript.HorizontalInput));
+            _playerAnimator.SetFloat(_speedHash, Mathf.Abs(_playerMover.HorizontalInput));
         }
     }
 
     private void PlayerJumpingCheck()
     {
-        if (_playerMoverScript.IsOnGround)
-        {
-            _playerAnimator.SetBool("IsJumping", false);
-        }
-        else
-        {
-            _playerAnimator.SetBool("IsJumping", true);
-        }
+        _playerAnimator.SetBool(_isJumpingHash, _playerMover.IsOnGround == false);
     }
 }
