@@ -9,7 +9,7 @@ public class PlayerAnimator : MonoBehaviour
     private int _speedHash = Animator.StringToHash("Speed");
     private int _isJumpingHash = Animator.StringToHash("IsJumping");
 
-    private void Start()
+    private void Awake()
     {
         _playerAnimator = GetComponent<Animator>();
         _playerMover = GetComponent<PlayerMover>();
@@ -17,27 +17,23 @@ public class PlayerAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerMover.OnHorizontalPositionChange += RunningPlay;
-        PlayerMover.OnVerticalPositionChange += JumpingPlay;
+        _playerMover.OnHorizontalChanged += RunningPlay;
+        _playerMover.OnVerticalChanged += JumpingPlay;
     }
 
     private void OnDisable()
     {
-        PlayerMover.OnHorizontalPositionChange -= RunningPlay;
-        PlayerMover.OnVerticalPositionChange -= JumpingPlay;
+        _playerMover.OnHorizontalChanged -= RunningPlay;
+        _playerMover.OnVerticalChanged -= JumpingPlay;
     }
 
-    private void RunningPlay()
+    private void RunningPlay(float horizontalInput)
     {
-        if (_playerMover.IsOnGround)
-        {
-            _playerAnimator.SetFloat(_speedHash, Mathf.Abs(Mathf.Round(_playerMover.HorizontalInput)));
-        }
+        _playerAnimator.SetFloat(_speedHash, Mathf.Abs(Mathf.Round(horizontalInput)));
     }
 
     private void JumpingPlay()
     {
-        bool isJumping = !_playerAnimator.GetBool(_isJumpingHash);
-        _playerAnimator.SetBool(_isJumpingHash, isJumping);
+        _playerAnimator.SetBool(_isJumpingHash, _playerMover.IsOnGround == false);
     }
 }

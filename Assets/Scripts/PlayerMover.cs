@@ -10,12 +10,12 @@ public class PlayerMover : MonoBehaviour
 
     private Rigidbody2D _playerRigidbody;
     private SpriteRenderer _playerSpriteRenderer;
+    private float _horizontalInput;
     private string _horizontalInputName = "Horizontal";
 
-    public static Action OnVerticalPositionChange;
-    public static Action OnHorizontalPositionChange;
+    public Action<float> OnHorizontalChanged;
+    public Action OnVerticalChanged;
 
-    public float HorizontalInput { get; private set; }
     public bool IsOnGround { get; private set; } = true;
 
     private void Start()
@@ -29,13 +29,13 @@ public class PlayerMover : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IsOnGround = true;
-        OnVerticalPositionChange?.Invoke();
+        OnVerticalChanged?.Invoke();
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         IsOnGround = false;
-        OnVerticalPositionChange?.Invoke();
+        OnVerticalChanged?.Invoke();
     }
 
     private void Update()
@@ -46,15 +46,15 @@ public class PlayerMover : MonoBehaviour
 
     private void Move()
     {
-        HorizontalInput = Input.GetAxis(_horizontalInputName);
+        _horizontalInput = Input.GetAxis(_horizontalInputName);
 
-        if (HorizontalInput != 0)
+        if (_horizontalInput != 0)
         {
-            OnHorizontalPositionChange?.Invoke();
+            OnHorizontalChanged?.Invoke(_horizontalInput);
 
-            transform.position += new Vector3(HorizontalInput, 0f, 0f) * _speed * Time.deltaTime;
+            transform.position += new Vector3(_horizontalInput, 0f, 0f) * _speed * Time.deltaTime;
 
-            _playerSpriteRenderer.flipX = HorizontalInput < 0 ? true : false;
+            _playerSpriteRenderer.flipX = _horizontalInput < 0 ? true : false;
         }
     }
 

@@ -22,7 +22,7 @@ public class EnemyPatroller : MonoBehaviour
         Patrol();
     }
 
-    private void GetWayPoint()
+    private void ChooseRandomPoint()
     {
         _randomWaypointIndex = Random.Range(0, _waypoints.Length);
     }
@@ -33,8 +33,8 @@ public class EnemyPatroller : MonoBehaviour
         
         if (Vector2.Distance(transform.position, _waypoints[_randomWaypointIndex].transform.position) < _endDetectionOffset)
         {
-            _playerSpriteRenderer.flipX = _randomWaypointIndex == _secondPointIndex ? true : false;
-            GetWayPoint();
+            _playerSpriteRenderer.flipX = _randomWaypointIndex == _secondPointIndex;
+            ChooseRandomPoint();
         }
     }
 }
