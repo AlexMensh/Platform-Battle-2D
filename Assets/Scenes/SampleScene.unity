@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2226604375006241724, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: m_Name
-      value: SpawnPoint
+      value: PowerupPoint
       objectReference: {fileID: 0}
     - target: {fileID: 6326158676525682826, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: _powerpup
@@ -433,7 +433,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2226604375006241724, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: m_Name
-      value: SpawnPoint
+      value: PowerupPoint
       objectReference: {fileID: 0}
     - target: {fileID: 6326158676525682826, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: _powerpup
@@ -582,7 +582,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2226604375006241724, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: m_Name
-      value: SpawnPoint
+      value: PowerupPoint
       objectReference: {fileID: 0}
     - target: {fileID: 6326158676525682826, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: _powerpup
@@ -783,7 +783,7 @@ GameObject:
   - component: {fileID: 1045370568}
   - component: {fileID: 1045370567}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: PowerupPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -973,7 +973,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2226604375006241724, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: m_Name
-      value: SpawnPoint
+      value: PowerupPoint
       objectReference: {fileID: 0}
     - target: {fileID: 6326158676525682826, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: _powerpup
