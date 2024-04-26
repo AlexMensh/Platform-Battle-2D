@@ -10,6 +10,7 @@ public class PlayerMover : MonoBehaviour
 
     private Rigidbody2D _playerRigidbody;
     private SpriteRenderer _playerSpriteRenderer;
+    private bool _isStartJump;
     private float _horizontalInput;
     private string _horizontalInputName = "Horizontal";
 
@@ -38,6 +39,11 @@ public class PlayerMover : MonoBehaviour
         OnVerticalChanged?.Invoke();
     }
 
+    private void FixedUpdate()
+    {
+        ApplyJumpForce();
+    }
+
     private void Update()
     {
         Move();
@@ -54,7 +60,7 @@ public class PlayerMover : MonoBehaviour
 
             transform.position += new Vector3(_horizontalInput, 0f, 0f) * _speed * Time.deltaTime;
 
-            _playerSpriteRenderer.flipX = _horizontalInput < 0 ? true : false;
+            _playerSpriteRenderer.flipX = _horizontalInput < 0;
         }
     }
 
@@ -62,7 +68,16 @@ public class PlayerMover : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround)
         {
+            _isStartJump = true;
+        }
+    }
+
+    private void ApplyJumpForce()
+    {
+        if (_isStartJump)
+        {
             _playerRigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            _isStartJump = false;
         }
     }
 }
