@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    [SerializeField] private float _health;
+    [SerializeField] private float _maxHealth;
+
+    public void TakeDamage(int damage)
     {
-        if (collision.gameObject.GetComponent<Powerup>())
-        {
-            collision.gameObject.SetActive(false);
-        }
+        _health -= damage;
+    }
+
+    public void RestoreHealth(int healAmount)
+    {
+        if (_health <= _maxHealth)
+            _health += healAmount;
+        else
+            _health = _maxHealth;
     }
 }

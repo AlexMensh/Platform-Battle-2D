@@ -798,16 +798,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1045370566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00283f8d0c9232b4dba33015976f44de, type: 3}
+  m_Script: {fileID: 11500000, guid: dc911d0b969a00a4c85d7dce8dd200b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPoints:
+  _poolPoints:
   - {fileID: 958617280}
   - {fileID: 1638774950}
   - {fileID: 582622591}
   - {fileID: 1049491229}
-  _spawnDelay: 1
-  _maxRoundPowerups: 100
 --- !u!4 &1045370568
 Transform:
   m_ObjectHideFlags: 0
