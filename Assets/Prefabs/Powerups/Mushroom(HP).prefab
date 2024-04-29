@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6202263081771106063}
   - component: {fileID: 7259765022207115548}
   m_Layer: 0
-  m_Name: Mushroom
+  m_Name: Mushroom(HP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,9 +88,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2278812220579705550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 557f670534501cf4eb6c7b4752f7f9d8, type: 3}
+  m_Script: {fileID: 11500000, guid: c2a7f45cf464c9a45b99dbd55c65284a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healPoints: 35
 --- !u!1 &4685202956236003838
 GameObject:
   m_ObjectHideFlags: 0

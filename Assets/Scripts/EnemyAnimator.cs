@@ -11,6 +11,7 @@ public class EnemyAnimator : MonoBehaviour
 
     private void Awake()
     {
+        _enemyAnimator = GetComponent<Animator>();
         _enemyAttack = GetComponent<EnemyAttack>();
     }
 

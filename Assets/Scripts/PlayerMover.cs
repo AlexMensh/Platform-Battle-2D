@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -10,7 +9,6 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _gravityForce;
 
     private Rigidbody2D _playerRigidbody;
-    private SpriteRenderer _playerSpriteRenderer;
     private bool _isStartJump;
     private int _reversalNumber = 180;
     private float _horizontalInput;
@@ -24,7 +22,6 @@ public class PlayerMover : MonoBehaviour
     private void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
-        _playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
         Physics2D.gravity *= _gravityForce;
     }
@@ -37,8 +34,11 @@ public class PlayerMover : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        IsOnGround = false;
-        OnVerticalChanged?.Invoke();
+        if (collision.gameObject.GetComponent<Platform>())
+        {
+            IsOnGround = false;
+            OnVerticalChanged?.Invoke();
+        }
     }
 
     private void FixedUpdate()

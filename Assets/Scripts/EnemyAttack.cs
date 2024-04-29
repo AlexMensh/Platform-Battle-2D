@@ -4,6 +4,9 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private int _attackPower;
+    [SerializeField] private float _attackSpeed;
+
+    private float _startAttackTime;
 
     public Action OnAttacked;
 
@@ -15,9 +18,14 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    public void Attack(Player player)
+    private void Attack(Player player)
     {
-        player.TakeDamage(_attackPower);
-        OnAttacked?.Invoke();
+        if (Time.time >= _startAttackTime)
+        {
+            player.TakeDamage(_attackPower);
+            OnAttacked?.Invoke();
+            _startAttackTime = Time.time + 1f / _attackSpeed;
+
+        }
     }
 }
