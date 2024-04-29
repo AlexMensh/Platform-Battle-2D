@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public class PlayerMover : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerMover : MonoBehaviour
     private Rigidbody2D _playerRigidbody;
     private SpriteRenderer _playerSpriteRenderer;
     private bool _isStartJump;
+    private int _reversalNumber = 180;
     private float _horizontalInput;
     private string _horizontalInputName = "Horizontal";
 
@@ -60,7 +62,10 @@ public class PlayerMover : MonoBehaviour
 
             transform.position += new Vector3(_horizontalInput, 0f, 0f) * _speed * Time.deltaTime;
 
-            _playerSpriteRenderer.flipX = _horizontalInput < 0;
+            if (_horizontalInput < 0)
+                transform.rotation = Quaternion.Euler(0, _reversalNumber, 0);
+            else if (_horizontalInput > 0)
+                transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
