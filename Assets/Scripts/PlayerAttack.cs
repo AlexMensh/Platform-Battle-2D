@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
     {
         Collider2D target = Physics2D.OverlapCircle(_playerAttackZone.transform.position, _attackRadius);
 
-        if (target.gameObject.GetComponent<Enemy>())
+        if (target.gameObject.GetComponent<Enemy>() && target != null)
         {
             target.gameObject.GetComponent<Enemy>().TakeDamage(_attackPower);
         }

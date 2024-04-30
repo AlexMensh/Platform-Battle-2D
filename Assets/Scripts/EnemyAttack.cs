@@ -25,7 +25,6 @@ public class EnemyAttack : MonoBehaviour
             player.TakeDamage(_attackPower);
             OnAttacked?.Invoke();
             _startAttackTime = Time.time + 1f / _attackSpeed;
-
         }
     }
 }
