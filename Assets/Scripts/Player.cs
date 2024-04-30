@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
         if (_health < _maxHealth)
         {
             _health += healAmount;
+
             if (_health > _maxHealth)
                 _health = _maxHealth;
         }

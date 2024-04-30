@@ -24,6 +24,7 @@ public class EnemyAnimator : MonoBehaviour
     {
         _enemyAttack.OnAttacked -= AttackPlay;
     }
+
     private void AttackPlay()
     {
         _enemyAnimator.SetBool(_isAttackingHash, true);

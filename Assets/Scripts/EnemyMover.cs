@@ -67,13 +67,11 @@ public class EnemyPatroller : MonoBehaviour
                 _isDetected = false;
                 ChooseStartPointNext();
             }
-
             else if (transform.position.x > _endPoint.transform.position.x)
             {
                 _isDetected = false;
                 ChooseEndPointNext();
             }
-
 
             _spriteRenderer.flipX = transform.position.x > _playerTransform.position.x;
         }
