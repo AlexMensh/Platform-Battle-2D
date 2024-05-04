@@ -1,16 +1,17 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _gravityForce;
 
+    private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _playerRigidbody;
     private bool _isStartJump;
-    private int _reversalNumber = 180;
+    private bool _isFacingRight = true;
     private float _horizontalInput;
     private string _horizontalInputName = "Horizontal";
 
@@ -22,6 +23,7 @@ public class PlayerMover : MonoBehaviour
     private void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         Physics2D.gravity *= _gravityForce;
     }
@@ -62,10 +64,14 @@ public class PlayerMover : MonoBehaviour
 
             transform.position += new Vector3(_horizontalInput, 0f, 0f) * _speed * Time.deltaTime;
 
-            if (_horizontalInput < 0)
-                transform.rotation = Quaternion.Euler(0, _reversalNumber, 0);
-            else if (_horizontalInput > 0)
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+            if (_horizontalInput < 0 && _isFacingRight)
+            {
+                Flip();
+            }
+            else if (_horizontalInput > 0 && !_isFacingRight)
+            {
+                Flip();
+            }
         }
     }
 
@@ -84,5 +90,10 @@ public class PlayerMover : MonoBehaviour
             _playerRigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _isStartJump = false;
         }
+    }
+    private void Flip()
+    {
+        _isFacingRight = !_isFacingRight;
+        _spriteRenderer.flipX = !_isFacingRight;
     }
 }

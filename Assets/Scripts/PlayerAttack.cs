@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private PlayerAttackZone _playerAttackZone;
     [SerializeField] private int _attackPower;
     [SerializeField] private float _attackRadius;
     [SerializeField] private float _attackSpeed;
@@ -19,12 +18,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(_playerAttackZone.transform.position, _attackRadius);
+        Gizmos.DrawWireSphere(transform.position, _attackRadius);
     }
 
     public void ApplyDamage()
     {
-        Collider2D target = Physics2D.OverlapCircle(_playerAttackZone.transform.position, _attackRadius);
+        Collider2D target = Physics2D.OverlapCircle(transform.position, _attackRadius);
 
         if (target.gameObject.GetComponent<Enemy>() && target != null)
         {
