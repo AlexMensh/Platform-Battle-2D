@@ -1,1 +1,1 @@
-public class Player : Unit { }
+public class Player : Health { }

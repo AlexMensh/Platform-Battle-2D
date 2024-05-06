@@ -1,26 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Unit))]
+[RequireComponent(typeof(Health))]
 public class UIDrawer : MonoBehaviour
 {
     [SerializeField] private Slider _healthBar;
 
-    private Unit _player;
+    private Health _health;
 
     private void Awake()
     {
-        _player = GetComponent<Unit>();
+        _health = GetComponent<Health>();
     }
 
     private void OnEnable()
     {
-        _player.HealthChanged += DrawUI;
+        _health.HealthChanged += DrawUI;
     }
 
     private void OnDisable()
     {
-        _player.HealthChanged -= DrawUI;
+        _health.HealthChanged -= DrawUI;
     }
 
     public void DrawUI(float health, float maxHealth)

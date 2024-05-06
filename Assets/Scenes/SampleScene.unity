@@ -1568,6 +1568,10 @@ PrefabInstance:
       propertyPath: _maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2046806167796620149, guid: 6762439f1f2ec584985de70396163201, type: 3}
+      propertyPath: _detectRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2069206656662010738, guid: 6762439f1f2ec584985de70396163201, type: 3}
       propertyPath: _endPoint
       value: 
@@ -3382,6 +3386,10 @@ PrefabInstance:
     - target: {fileID: 1945556010804474748, guid: 6762439f1f2ec584985de70396163201, type: 3}
       propertyPath: _maxHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046806167796620149, guid: 6762439f1f2ec584985de70396163201, type: 3}
+      propertyPath: _detectRadius
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2069206656662010738, guid: 6762439f1f2ec584985de70396163201, type: 3}
       propertyPath: _endPoint

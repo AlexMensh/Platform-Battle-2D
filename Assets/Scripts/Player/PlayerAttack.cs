@@ -7,9 +7,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _attackRadius;
     [SerializeField] private float _attackSpeed;
 
+    private float _attackTime—oefficient = 1f;
     private float _startAttackTime;
 
-    public event Action BeenAttacked;
+    public event Action Attacked;
 
     public void Update()
     {
@@ -30,7 +31,7 @@ public class PlayerAttack : MonoBehaviour
             target.gameObject.GetComponent<Enemy>().TakeDamage(_attackPower);
         }
 
-        BeenAttacked?.Invoke();
+        Attacked?.Invoke();
     }
 
     private void Attack()
@@ -40,8 +41,8 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 ApplyDamage();
-                BeenAttacked?.Invoke();
-                _startAttackTime = Time.time + 1f / _attackSpeed;
+                Attacked?.Invoke();
+                _startAttackTime = Time.time + _attackTime—oefficient / _attackSpeed;
             }
         }
     }

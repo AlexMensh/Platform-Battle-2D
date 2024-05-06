@@ -22,14 +22,14 @@ public class PlayerAnimator : MonoBehaviour
     {
         _playerMover.HorizontalChanged += RunningPlay;
         _playerMover.VerticalChanged += JumpingPlay;
-        _playerAttack.BeenAttacked += AttackPlay;
+        _playerAttack.Attacked += AttackPlay;
     }
 
     private void OnDisable()
     {
         _playerMover.HorizontalChanged -= RunningPlay;
         _playerMover.VerticalChanged -= JumpingPlay;
-        _playerAttack.BeenAttacked -= AttackPlay;
+        _playerAttack.Attacked -= AttackPlay;
     }
 
     private void RunningPlay(float horizontalInput)

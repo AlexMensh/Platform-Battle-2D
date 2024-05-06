@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
 
     private float _startAttackTime;
 
-    public event Action BeenAttacked;
+    public event Action Attacked;
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -23,7 +23,7 @@ public class EnemyAttack : MonoBehaviour
         if (Time.time >= _startAttackTime)
         {
             player.TakeDamage(_attackPower);
-            BeenAttacked?.Invoke();
+            Attacked?.Invoke();
             _startAttackTime = Time.time + 1f / _attackSpeed;
         }
     }
