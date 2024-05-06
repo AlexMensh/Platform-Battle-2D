@@ -85,9 +85,9 @@ public class EnemyPatroller : MonoBehaviour
     {
         Collider2D target = Physics2D.OverlapCircle(transform.position, _detectRadius);
 
-        if (target.gameObject.GetComponent<Player>() && target != null)
+        if (target.TryGetComponent(out Player player))
         {
-            _playerTransform = target.gameObject.transform;
+            _playerTransform = player.transform;
             _isDetected = true;
         }
     }

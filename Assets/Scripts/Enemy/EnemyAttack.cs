@@ -12,9 +12,9 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Player>())
+        if (collision.collider.TryGetComponent(out Player player))
         {
-            Attack(collision.gameObject.GetComponent<Player>());
+            Attack(player);
         }
     }
 

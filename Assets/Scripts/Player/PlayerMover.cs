@@ -36,7 +36,7 @@ public class PlayerMover : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Platform>())
+        if (collision.collider.TryGetComponent(out Platform platform))
         {
             IsOnGround = false;
             VerticalChanged?.Invoke();

@@ -12,10 +12,10 @@ public class PlayerItemPicker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Powerup>())
+        if (collision.TryGetComponent(out Powerup powerup))
         {
-            collision.gameObject.GetComponent<Powerup>().Heal(_player);
-            collision.gameObject.SetActive(false);
+            powerup.Heal(_player);
+            powerup.gameObject.SetActive(false);
         }
     }
 }
