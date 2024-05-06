@@ -6,6 +6,6 @@ public class Powerup : MonoBehaviour
 
     public void Heal(Player player)
     {
-        player.RestoreHealth(_healPoints);
+        player.Heal(_healPoints);
     }
 }

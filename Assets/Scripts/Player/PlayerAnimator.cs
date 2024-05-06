@@ -20,16 +20,16 @@ public class PlayerAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerMover.OnHorizontalChanged += RunningPlay;
-        _playerMover.OnVerticalChanged += JumpingPlay;
-        _playerAttack.OnAttacked += AttackPlay;
+        _playerMover.HorizontalChanged += RunningPlay;
+        _playerMover.VerticalChanged += JumpingPlay;
+        _playerAttack.BeenAttacked += AttackPlay;
     }
 
     private void OnDisable()
     {
-        _playerMover.OnHorizontalChanged -= RunningPlay;
-        _playerMover.OnVerticalChanged -= JumpingPlay;
-        _playerAttack.OnAttacked -= AttackPlay;
+        _playerMover.HorizontalChanged -= RunningPlay;
+        _playerMover.VerticalChanged -= JumpingPlay;
+        _playerAttack.BeenAttacked -= AttackPlay;
     }
 
     private void RunningPlay(float horizontalInput)

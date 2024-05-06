@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
 
     private float _startAttackTime;
 
-    public Action OnAttacked;
+    public event Action BeenAttacked;
 
     public void Update()
     {
@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
             target.gameObject.GetComponent<Enemy>().TakeDamage(_attackPower);
         }
 
-        OnAttacked?.Invoke();
+        BeenAttacked?.Invoke();
     }
 
     private void Attack()
@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 ApplyDamage();
-                OnAttacked?.Invoke();
+                BeenAttacked?.Invoke();
                 _startAttackTime = Time.time + 1f / _attackSpeed;
             }
         }

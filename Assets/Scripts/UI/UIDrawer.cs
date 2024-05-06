@@ -15,12 +15,12 @@ public class UIDrawer : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.OnHealthChanged += DrawUI;
+        _player.HealthChanged += DrawUI;
     }
 
     private void OnDisable()
     {
-        _player.OnHealthChanged -= DrawUI;
+        _player.HealthChanged -= DrawUI;
     }
 
     public void DrawUI(float health, float maxHealth)

@@ -17,12 +17,12 @@ public class EnemyAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemyAttack.OnAttacked += AttackPlay;
+        _enemyAttack.BeenAttacked += AttackPlay;
     }
 
     private void OnDisable()
     {
-        _enemyAttack.OnAttacked -= AttackPlay;
+        _enemyAttack.BeenAttacked -= AttackPlay;
     }
 
     private void AttackPlay()

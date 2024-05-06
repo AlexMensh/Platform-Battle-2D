@@ -15,8 +15,8 @@ public class PlayerMover : MonoBehaviour
     private float _horizontalInput;
     private string _horizontalInputName = "Horizontal";
 
-    public Action<float> OnHorizontalChanged;
-    public Action OnVerticalChanged;
+    public event Action<float> HorizontalChanged;
+    public event Action VerticalChanged;
 
     public bool IsOnGround { get; private set; } = true;
 
@@ -31,7 +31,7 @@ public class PlayerMover : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IsOnGround = true;
-        OnVerticalChanged?.Invoke();
+        VerticalChanged?.Invoke();
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -39,7 +39,7 @@ public class PlayerMover : MonoBehaviour
         if (collision.gameObject.GetComponent<Platform>())
         {
             IsOnGround = false;
-            OnVerticalChanged?.Invoke();
+            VerticalChanged?.Invoke();
         }
     }
 
@@ -60,7 +60,7 @@ public class PlayerMover : MonoBehaviour
 
         if (_horizontalInput != 0)
         {
-            OnHorizontalChanged?.Invoke(_horizontalInput);
+            HorizontalChanged?.Invoke(_horizontalInput);
 
             transform.position += new Vector3(_horizontalInput, 0f, 0f) * _speed * Time.deltaTime;
 
