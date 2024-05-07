@@ -12,7 +12,7 @@ public class EnemyAttack : MonoBehaviour
 
     public event Action Attacked;
 
-    public void Update()
+    private void Update()
     {
         Attack();
     }
@@ -22,7 +22,16 @@ public class EnemyAttack : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _attackRadius);
     }
 
-    public void ApplyDamage()
+    private void Attack()
+    {
+        if (Time.time >= _startAttackTime)
+        {
+            ApplyDamage();
+            _startAttackTime = Time.time + _attackTime—oefficient / _attackSpeed;
+        }
+    }
+
+    private void ApplyDamage()
     {
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _attackRadius);
 
@@ -33,15 +42,6 @@ public class EnemyAttack : MonoBehaviour
                 player.TakeDamage(_attackPower);
                 Attacked?.Invoke();
             }
-        }
-    }
-
-    private void Attack()
-    {
-        if (Time.time >= _startAttackTime)
-        {
-            ApplyDamage();
-            _startAttackTime = Time.time + _attackTime—oefficient / _attackSpeed;
         }
     }
 }

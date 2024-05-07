@@ -204,9 +204,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc699b2c0b6eab48a49210c81a7aea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackPower: 35
-  _attackRadius: 1.5
-  _attackSpeed: 3
+  _meleeAttackDamage: 35
+  _meleeAttackRadius: 1.5
+  _meleeAttackSpeed: 2
+  _vampiricAttackDamage: 10
+  _vampiricAttackRadius: 3
+  _vampiricAttackSpeed: 0.75
+  _vampiricAttackDuration: 6
 --- !u!114 &4580888682119095151
 MonoBehaviour:
   m_ObjectHideFlags: 0
