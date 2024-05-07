@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 9130723945558935711}
   - component: {fileID: 2069206656662010738}
   - component: {fileID: 2715911056751818201}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy_Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _maxHealth: 100
+  _minHealth: 0
 --- !u!114 &9130723945558935711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackPower: 20
+  _attackRadius: 1.2
   _attackSpeed: 1
 --- !u!114 &2069206656662010738
 MonoBehaviour:
@@ -232,7 +234,7 @@ MonoBehaviour:
   _endPoint: {fileID: 0}
   _speed: 1
   _pursuitSpeed: 2
-  _detectRadius: 3
+  _detectRadius: 1.5
 --- !u!114 &2715911056751818201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +260,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unit_Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 78917209090096122, guid: 7c394a5c74d14dd409e9a91f2b3dc8ea, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 863125638746976755, guid: 7c394a5c74d14dd409e9a91f2b3dc8ea, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3036038216388080498, guid: 7c394a5c74d14dd409e9a91f2b3dc8ea, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -269,6 +279,14 @@ PrefabInstance:
     - target: {fileID: 3497895244866981828, guid: 7c394a5c74d14dd409e9a91f2b3dc8ea, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613362023371934761, guid: 7c394a5c74d14dd409e9a91f2b3dc8ea, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919782336721264583, guid: 7c394a5c74d14dd409e9a91f2b3dc8ea, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7435704424128131952, guid: 7c394a5c74d14dd409e9a91f2b3dc8ea, type: 3}
       propertyPath: m_Pivot.x
@@ -349,6 +367,10 @@ PrefabInstance:
     - target: {fileID: 7435704424128131952, guid: 7c394a5c74d14dd409e9a91f2b3dc8ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8802758950174534556, guid: 7c394a5c74d14dd409e9a91f2b3dc8ea, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class EnemyPatroller : MonoBehaviour
+public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private Transform _startPoint;
     [SerializeField] private Transform _endPoint;
@@ -13,7 +13,7 @@ public class EnemyPatroller : MonoBehaviour
     private Transform _playerTransform;
     private Transform _nextPoint;
     private bool _isDetected = false;
-    private float _endPointOffset = 0.2f;
+    private float _endPointOffset = 0.1f;
 
     private void Start()
     {
@@ -23,6 +23,7 @@ public class EnemyPatroller : MonoBehaviour
 
     private void Update()
     {
+        Patrol();
         if (_isDetected == false)
         {
             Patrol();
@@ -83,12 +84,15 @@ public class EnemyPatroller : MonoBehaviour
 
     private void DetectPlayer()
     {
-        Collider2D target = Physics2D.OverlapCircle(transform.position, _detectRadius);
+        Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _detectRadius);
 
-        if (target.TryGetComponent(out Player player))
+        foreach (Collider2D target in targets)
         {
-            _playerTransform = player.transform;
-            _isDetected = true;
+            if (target.TryGetComponent(out Player player))
+            {
+                _playerTransform = player.transform;
+                _isDetected = true;
+            }
         }
     }
 

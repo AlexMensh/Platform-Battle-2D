@@ -4,27 +4,44 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private int _attackPower;
+    [SerializeField] private float _attackRadius;
     [SerializeField] private float _attackSpeed;
 
+    private float _attackTime—oefficient = 1f;
     private float _startAttackTime;
 
     public event Action Attacked;
 
-    private void OnCollisionStay2D(Collision2D collision)
+    public void Update()
     {
-        if (collision.collider.TryGetComponent(out Player player))
+        Attack();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, _attackRadius);
+    }
+
+    public void ApplyDamage()
+    {
+        Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _attackRadius);
+
+        foreach (Collider2D target in targets)
         {
-            Attack(player);
+            if (target.TryGetComponent(out Player player))
+            {
+                player.TakeDamage(_attackPower);
+                Attacked?.Invoke();
+            }
         }
     }
 
-    private void Attack(Player player)
+    private void Attack()
     {
         if (Time.time >= _startAttackTime)
         {
-            player.TakeDamage(_attackPower);
-            Attacked?.Invoke();
-            _startAttackTime = Time.time + 1f / _attackSpeed;
+            ApplyDamage();
+            _startAttackTime = Time.time + _attackTime—oefficient / _attackSpeed;
         }
     }
 }

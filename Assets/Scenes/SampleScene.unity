@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2226604375006241724, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986788975449119044, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6326158676525682826, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: _powerpup
       value: 
@@ -196,6 +204,10 @@ PrefabInstance:
       value: Mushroom(HP)
       objectReference: {fileID: 0}
     - target: {fileID: 7622680557773714036, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622680557773714036, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -229,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 355484891}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.14, y: 0.9, z: 0}
+  m_LocalPosition: {x: 2.62, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -353,7 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609877622}
   - component: {fileID: 609877623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WOODS - Third
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,6 +451,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2226604375006241724, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986788975449119044, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6326158676525682826, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: _powerpup
       value: 
@@ -488,6 +508,10 @@ PrefabInstance:
       value: Mushroom(HP)
       objectReference: {fileID: 0}
     - target: {fileID: 7622680557773714036, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622680557773714036, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -511,7 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705132744}
   - component: {fileID: 705132745}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: graveyard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,6 +621,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2226604375006241724, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986788975449119044, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6326158676525682826, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: _powerpup
       value: 
@@ -646,6 +678,10 @@ PrefabInstance:
       value: Mushroom(HP)
       objectReference: {fileID: 0}
     - target: {fileID: 7622680557773714036, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622680557773714036, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -680,7 +716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017942673}
   - component: {fileID: 1017942674}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BACKGROUND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1045370568}
   - component: {fileID: 1045370567}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PowerupPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +919,7 @@ Transform:
   m_GameObject: {fileID: 1082295187}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.24, y: 0.89, z: 0}
+  m_LocalPosition: {x: -0.69, y: 0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -914,7 +950,7 @@ Transform:
   m_GameObject: {fileID: 1194687778}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.47, y: -4.17, z: 0}
+  m_LocalPosition: {x: -11.13, y: -4.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -935,7 +971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1210368039}
   - component: {fileID: 1210368040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WOODS - First
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,6 +1057,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2226604375006241724, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986788975449119044, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6326158676525682826, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: _powerpup
       value: 
@@ -1070,6 +1114,10 @@ PrefabInstance:
       value: Mushroom(HP)
       objectReference: {fileID: 0}
     - target: {fileID: 7622680557773714036, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622680557773714036, guid: 2d73896ab1e14584fadc16a6bffe4bc8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1114,7 +1162,7 @@ Transform:
   m_GameObject: {fileID: 1346910706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.47, y: -4.16, z: 0}
+  m_LocalPosition: {x: -6.72, y: -4.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1131,7 +1179,7 @@ GameObject:
   - component: {fileID: 1388882607}
   - component: {fileID: 1388882609}
   - component: {fileID: 1388882608}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Decorations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1466,7 +1514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1502384809}
   - component: {fileID: 1502384810}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WOODS - Second
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1564,10 +1612,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1945556010804474748, guid: 6762439f1f2ec584985de70396163201, type: 3}
-      propertyPath: _maxHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2046806167796620149, guid: 6762439f1f2ec584985de70396163201, type: 3}
       propertyPath: _detectRadius
       value: 2
@@ -1580,6 +1624,10 @@ PrefabInstance:
       propertyPath: _startPoint
       value: 
       objectReference: {fileID: 1194687779}
+    - target: {fileID: 2069206656662010738, guid: 6762439f1f2ec584985de70396163201, type: 3}
+      propertyPath: _detectRadius
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3536573170840623616, guid: 6762439f1f2ec584985de70396163201, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.8
@@ -1648,6 +1696,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9130723945558935711, guid: 6762439f1f2ec584985de70396163201, type: 3}
+      propertyPath: _attackRadius
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1663,7 +1715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1538392004}
   - component: {fileID: 1538392003}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1711,7 +1763,7 @@ GameObject:
   - component: {fileID: 1585838332}
   - component: {fileID: 1585838334}
   - component: {fileID: 1585838333}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1902,7 +1954,7 @@ GameObject:
   - component: {fileID: 1619834807}
   - component: {fileID: 1619834806}
   - component: {fileID: 1619834809}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3183,7 +3235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1766773528}
   - component: {fileID: 1766773529}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WOODS - Fourth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3401,7 +3453,7 @@ PrefabInstance:
       objectReference: {fileID: 1082295188}
     - target: {fileID: 2069206656662010738, guid: 6762439f1f2ec584985de70396163201, type: 3}
       propertyPath: _detectRadius
-      value: 2.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2069206656662010738, guid: 6762439f1f2ec584985de70396163201, type: 3}
       propertyPath: _pursuitSpeed
@@ -3486,6 +3538,10 @@ PrefabInstance:
     - target: {fileID: 8824121788648784290, guid: 6762439f1f2ec584985de70396163201, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130723945558935711, guid: 6762439f1f2ec584985de70396163201, type: 3}
+      propertyPath: _attackRadius
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -24,14 +24,16 @@ public class PlayerAttack : MonoBehaviour
 
     public void ApplyDamage()
     {
-        Collider2D target = Physics2D.OverlapCircle(transform.position, _attackRadius);
+        Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _attackRadius);
 
-        if (target.TryGetComponent(out Enemy enemy))
+        foreach (Collider2D target in targets)
         {
-            enemy.TakeDamage(_attackPower);
+            if (target.TryGetComponent(out Enemy enemy))
+            {
+                enemy.TakeDamage(_attackPower);
+                Attacked?.Invoke();
+            }
         }
-
-        Attacked?.Invoke();
     }
 
     private void Attack()
@@ -41,7 +43,6 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 ApplyDamage();
-                Attacked?.Invoke();
                 _startAttackTime = Time.time + _attackTime—oefficient / _attackSpeed;
             }
         }
