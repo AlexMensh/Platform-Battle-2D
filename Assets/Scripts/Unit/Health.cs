@@ -25,4 +25,9 @@ public class Health : MonoBehaviour
 
         HealthChanged?.Invoke(_health, _maxHealth);
     }
+
+    public int GetHealthValue()
+    {
+        return _health;
+    }
 }

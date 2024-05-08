@@ -1,22 +1,28 @@
 using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Health))]
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private int _meleeAttackDamage;
     [SerializeField] private float _meleeAttackRadius;
-    [SerializeField] private float _meleeAttackSpeed;
+    [SerializeField] private float _meleeAttackDelay;
 
     [SerializeField] private int _vampiricAttackDamage;
     [SerializeField] private float _vampiricAttackRadius;
-    [SerializeField] private float _vampiricAttackSpeed;
     [SerializeField] private float _vampiricAttackDuration;
 
+    [SerializeField] private Slider _vampiricDurationSlider;
+    [SerializeField] private GameObject _vampiricAuraSprite;
+
     private Health _health;
-    private float _attackTime—oefficient = 1f;
-    private float _startAttackTime;
-    private float _vampiricAttackTimer;
+    private bool _isMeleeAttacking;
+    private bool _isVampiricAttacking;
+    private float _timerCoefficient = 1f;
+    private float _vampiricTimer;
 
     public event Action Attacked;
 
@@ -27,8 +33,14 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        MeleeAttack();
-        VampiricAttack();
+        if (Input.GetKeyDown(KeyCode.Tab) && _isMeleeAttacking == false)
+        {
+            StartCoroutine(MeleeAttack());
+        }
+        if (Input.GetKeyDown(KeyCode.CapsLock) && _isVampiricAttacking == false)
+        {
+            StartCoroutine(VampiricAttack());
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -39,55 +51,60 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _vampiricAttackRadius);
     }
 
-    private void MeleeAttack()
+    private IEnumerator MeleeAttack()
     {
-        if (Time.time >= _startAttackTime)
+        _isMeleeAttacking = true;
+
+        Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _meleeAttackRadius);
+
+        foreach (Collider2D target in targets)
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (target != null && target.TryGetComponent(out Enemy enemy))
             {
-                Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _meleeAttackRadius);
-
-                foreach (Collider2D target in targets)
-                {
-                    if (target.TryGetComponent(out Enemy enemy))
-                    {
-                        enemy.TakeDamage(_meleeAttackDamage);
-                    }
-                }
-
-                Attacked?.Invoke();
-
-                _startAttackTime = Time.time + _attackTime—oefficient / _meleeAttackSpeed;
+                enemy.TakeDamage(_meleeAttackDamage);
             }
         }
+
+        Attacked?.Invoke();
+
+        yield return new WaitForSeconds(_meleeAttackDelay);
+
+        _isMeleeAttacking = false;
     }
 
-    private void VampiricAttack()
+    private IEnumerator VampiricAttack()
     {
-        if (Input.GetKeyDown(KeyCode.CapsLock))
-        {
-            _vampiricAttackTimer = _vampiricAttackDuration;
-        }
+        _isVampiricAttacking = true;
 
-        if (_vampiricAttackTimer > 0)
-        {
-            _vampiricAttackTimer -= Time.deltaTime;
+        _vampiricTimer = _vampiricAttackDuration;
 
-            if (Time.time >= _startAttackTime)
+        while (_vampiricTimer != 0)
+        {
+            _vampiricAuraSprite.gameObject.SetActive(true);
+
+            Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _vampiricAttackRadius);
+
+            foreach (Collider2D target in targets)
             {
-                Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _vampiricAttackRadius);
-
-                foreach (Collider2D target in targets)
+                if (target != null && target.TryGetComponent(out Enemy enemy))
                 {
-                    if (target.TryGetComponent(out Enemy enemy))
-                    {
-                        enemy.TakeDamage(_vampiricAttackDamage);
+                    enemy.TakeDamage(_vampiricAttackDamage);
 
-                        _health.Heal(_vampiricAttackDamage);
-                        _startAttackTime = Time.time + _attackTime—oefficient / _vampiricAttackSpeed;
-                    }
+                    int healingAmount = Mathf.Min(_vampiricAttackDamage, enemy.GetHealthValue());
+
+                    _health.Heal(healingAmount);
                 }
             }
+
+            yield return new WaitForSeconds(_timerCoefficient);
+
+            _vampiricTimer--;
+
+            _vampiricDurationSlider.value = _vampiricTimer;
         }
+
+        _isVampiricAttacking = false;
+        _vampiricAuraSprite.gameObject.SetActive(false);
+        _vampiricDurationSlider.value = _vampiricAttackDuration;
     }
 }
