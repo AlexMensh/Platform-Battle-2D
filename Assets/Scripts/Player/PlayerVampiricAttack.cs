@@ -51,6 +51,8 @@ public class PlayerVampiricAttack : MonoBehaviour
 
         _vampiricTimer = _vampiricAttackDuration;
 
+        WaitForSeconds wait = new WaitForSeconds(_timerOneBeatRange);
+
         while (_vampiricTimer != 0)
         {
             Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _vampiricAttackRadius);
@@ -59,15 +61,15 @@ public class PlayerVampiricAttack : MonoBehaviour
             {
                 if (target != null && target.TryGetComponent(out Enemy enemy))
                 {
-                    enemy.TakeDamage(_vampiricAttackDamage);
-
                     int healingAmount = Mathf.Min(_vampiricAttackDamage, enemy.GetHealthValue());
+
+                    enemy.TakeDamage(_vampiricAttackDamage);
 
                     _health.Heal(healingAmount);
                 }
             }
 
-            yield return new WaitForSeconds(_timerOneBeatRange);
+            yield return wait;
 
             _vampiricTimer--;
 

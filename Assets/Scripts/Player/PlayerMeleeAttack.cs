@@ -42,6 +42,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     {
         _isMeleeAttacking = true;
 
+        WaitForSeconds wait = new WaitForSeconds(_meleeAttackDelay);
+
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _meleeAttackRadius);
 
         foreach (Collider2D target in targets)
@@ -54,7 +56,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
         Attacked?.Invoke();
 
-        yield return new WaitForSeconds(_meleeAttackDelay);
+        yield return wait;
 
         _isMeleeAttacking = false;
     }
