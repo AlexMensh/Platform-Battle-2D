@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackPower: 20
-  _attackRadius: 1.2
+  _attackRadius: 0.75
   _attackSpeed: 1
 --- !u!114 &2069206656662010738
 MonoBehaviour:

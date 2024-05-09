@@ -1,11 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(PlayerMover), typeof(PlayerAttack))]
+[RequireComponent(typeof(Animator), typeof(PlayerMover), typeof(PlayerMeleeAttack))]
 public class PlayerAnimator : MonoBehaviour
 {
     private Animator _playerAnimator;
     private PlayerMover _playerMover;
-    private PlayerAttack _playerAttack;
+    private PlayerMeleeAttack _playerMeleeAttack;
 
     private int _speedHash = Animator.StringToHash("Speed");
     private int _isJumpingHash = Animator.StringToHash("IsJumping");
@@ -15,21 +15,21 @@ public class PlayerAnimator : MonoBehaviour
     {
         _playerAnimator = GetComponent<Animator>();
         _playerMover = GetComponent<PlayerMover>();
-        _playerAttack = GetComponent<PlayerAttack>();
+        _playerMeleeAttack = GetComponent<PlayerMeleeAttack>();
     }
 
     private void OnEnable()
     {
         _playerMover.HorizontalChanged += RunningPlay;
         _playerMover.VerticalChanged += JumpingPlay;
-        _playerAttack.Attacked += AttackPlay;
+        _playerMeleeAttack.Attacked += AttackPlay;
     }
 
     private void OnDisable()
     {
         _playerMover.HorizontalChanged -= RunningPlay;
         _playerMover.VerticalChanged -= JumpingPlay;
-        _playerAttack.Attacked -= AttackPlay;
+        _playerMeleeAttack.Attacked -= AttackPlay;
     }
 
     private void RunningPlay(float horizontalInput)

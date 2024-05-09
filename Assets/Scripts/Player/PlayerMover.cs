@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(PlayerInput))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -10,10 +10,10 @@ public class PlayerMover : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _playerRigidbody;
+    private PlayerInput _playerInput;
     private bool _isStartJump;
     private bool _isFacingRight = true;
     private float _horizontalInput;
-    private string _horizontalInputName = "Horizontal";
 
     public event Action<float> HorizontalChanged;
     public event Action VerticalChanged;
@@ -24,6 +24,7 @@ public class PlayerMover : MonoBehaviour
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _playerInput = GetComponent<PlayerInput>();
 
         Physics2D.gravity *= _gravityForce;
     }
@@ -56,7 +57,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Move()
     {
-        _horizontalInput = Input.GetAxis(_horizontalInputName);
+        _horizontalInput = _playerInput.GetHorizontalInput();
 
         if (_horizontalInput != 0)
         {
@@ -77,7 +78,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && IsOnGround)
+        if (_playerInput.IsJumpKeyPressed() && IsOnGround)
         {
             _isStartJump = true;
         }
